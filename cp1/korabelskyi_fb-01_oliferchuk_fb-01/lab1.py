@@ -17,8 +17,8 @@ AlphabetWithoutSpaces = ['а','б','в','г','д','е','ж','з','и','й','к',
 
 BigramCrossWithSpaces = [text0[i:i+2] for i in range(len(text0))] #перехресна біграма з пробілами
 BigramCrossWithoutSpaces = [text1[i:i+2] for i in range(len(text1))] #перехресна біграма без пробілів
-NoCrossBigramWithSpaces = [text0[i:i+2] for i in range(len(text0))] #не перехресна біграма з пробілами
-NoCrossBigramWithoutSpaces = [text1[i:i+2] for i in range(len(text1))] #не перехресна біграма без пробілів
+NoCrossBigramWithSpaces = [text0[i:i+2] for i in range(0,len(text0),2)] #не перехресна біграма з пробілами
+NoCrossBigramWithoutSpaces = [text1[i:i+2] for i in range(0,len(text1),2)] #не перехресна біграма без пробілів
 
 def letters(alphabet, text):
     len_text = len(text)
