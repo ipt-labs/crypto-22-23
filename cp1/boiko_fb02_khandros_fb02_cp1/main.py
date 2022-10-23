@@ -101,9 +101,9 @@ def r_(string, h, alphabet):
 # print(f'h2 x without spaces: {h2_nosp}')
 
 
-r1 = r_(data_str_spaces, 1, alph_spaces)
-r1_nosp = r_(data_str_no_spaces, 1, alph_no_spaces)
-print(r1, r1_nosp)
-r2 = r_(data_str_spaces, 2, alph_spaces)
-r2_nosp = r_(data_str_no_spaces, 2, alph_no_spaces)
-print(r2, r2_nosp)
+# r1 = r_(data_str_spaces, 1, alph_spaces)
+# r1_nosp = r_(data_str_no_spaces, 1, alph_no_spaces)
+# print(r1, r1_nosp)
+# r2 = r_(data_str_spaces, 2, alph_spaces)
+# r2_nosp = r_(data_str_no_spaces, 2, alph_no_spaces)
+# print(r2, r2_nosp)
