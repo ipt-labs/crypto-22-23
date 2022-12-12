@@ -18,7 +18,7 @@ def format_file(file, formated_file):
     formatting_symbols += [' ']
 
     formatted_text = []
-    with open(file, 'r') as text, open(formated_file, "w") as ftext:
+    with open(file, 'r', encoding="UTF-8") as text, open(formated_file, "w", encoding="UTF-8") as ftext:
         arr = text.read().strip()
         result = []
         for letter in arr:
@@ -39,11 +39,10 @@ def monogram_frequency(formated_file, with_space = False):
 
     text = None
     data_header = 'With space'
-    with open(formated_file, 'r') as ftext:
+    with open(formated_file, 'r', encoding="UTF-8") as ftext:
         text = ftext.read()
         if not with_space:
             text = text.replace(" ",'')
-    print(len(text))
     data = Counter(text)
     data = dict(data)
     for item in data:
@@ -55,7 +54,7 @@ def monogram_frequency(formated_file, with_space = False):
 def bigram_frequency(formated_file, with_space = False, intersection = False):
     """ Returns frequency of bigrams from given text file """
     text = None
-    with open(formated_file, 'r') as ftext:
+    with open(formated_file, 'r', encoding="UTF-8") as ftext:
         text = ftext.read()
         if not with_space:
             text = text.replace(' ','')
@@ -68,7 +67,6 @@ def bigram_frequency(formated_file, with_space = False, intersection = False):
         for i in range(0, len(text)-1, 2):
             data.append(text[i]+text[i+1])
     
-    data.sort()
     data = Counter(data)
     data = dict(data)
 
@@ -106,7 +104,7 @@ def excess(h, alph_len):
 # Final results 
 #
 
-# format_file(FILE, FORMATTED_FILE)
+format_file(FILE, FORMATTED_FILE)
 df, h1, h2, exc = [None for i in range(4)]
 
 print("#       Monograms")
@@ -119,7 +117,7 @@ exc = round(excess(h1, S_ALPH_LEN), 7)
 print(top(df))
 print(f"H1: {h1}")
 print(f"Exc: {exc}\n")
-##############################################
+
 print("#    -- With no spaces --")
 df = monogram_frequency(FORMATTED_FILE, False)
 h1 = round(H1(df), 8)
@@ -128,7 +126,7 @@ print(top(df))
 print(f"H1: {h1}")
 print(f"Exc: {exc}\n")
 
-
+print("----------------------------------")
 print("#       Bigrams (no intersection)")
 ##############################################
 print("#    -- With spaces --")
@@ -138,16 +136,15 @@ exc = round(excess(h2, S_ALPH_LEN), 7)
 print(top(df))
 print(f"H2: {h2}")
 print(f"Exc: {exc}\n")
-print("length: " + str(len(df.index)))
-##############################################
+
 print("#    -- With no spaces --")
 df = bigram_frequency(FORMATTED_FILE, with_space=False, intersection=False)
-h2 = H2(df)
+h2 = H2(df) 
 exc = round(excess(h2, ALPH_LEN), 7)
 print(top(df))
 print(f"H2: {h2}")
 print(f"Exc: {exc}\n")
-print("length: " + str(len(df.index)))
+
 
 print("#         Bigrams (intersection)")
 ##############################################
@@ -158,8 +155,7 @@ exc = round(excess(h2, S_ALPH_LEN), 7)
 print(top(df))
 print(f"H2: {h2}")
 print(f"Exc: {exc}\n")
-print("length: " + str(len(df.index)))
-##############################################
+
 print("#    -- With no spaces --")
 df = bigram_frequency(FORMATTED_FILE, with_space=False, intersection=True)
 h2 = H2(df)
@@ -167,7 +163,7 @@ exc = round(excess(h2, ALPH_LEN), 7)
 print(top(df))
 print(f"H2: {h2}")
 print(f"Exc: {exc}\n")
-print("length: " + str(len(df.index)))
+
 
 
 
