@@ -59,20 +59,21 @@ def bigram_frequency(formated_file, with_space = False, intersection = False):
         if not with_space:
             text = text.replace(' ','')
     
-    data = []
+    unformatted_data = []
     if intersection:
         for i in range(0, len(text)-1):
-            data.append(text[i]+text[i+1])
+            unformatted_data.append(text[i]+text[i+1])
     else:
         for i in range(0, len(text)-1, 2):
-            data.append(text[i]+text[i+1])
+            unformatted_data.append(text[i]+text[i+1])
     
-    data = Counter(data)
-    data = dict(data)
+    bigrams_data = Counter(unformatted_data)
+    bigrams = dict(bigrams_data)
 
-    for item in data:
-        data[item] = [data[item], data[item]/len(text)]
-    df = pd.DataFrame(data.values(), index=data, columns=['count', 'periodicity'])
+    
+    for item in bigrams:
+        bigrams[item] = [bigrams[item], bigrams[item]/sum(bigrams_data.values())]
+    df = pd.DataFrame(bigrams.values(), index=bigrams, columns=['count', 'periodicity'])
     return df
 
 def top(df, amount=10):
